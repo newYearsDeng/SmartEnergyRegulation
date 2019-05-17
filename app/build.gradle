@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'smartenergyregulation2019'
+            keyPassword 'android'
+            storeFile file('D:/Program Files (x86)/keystore/smartenergyregulation.jks')
+            storePassword 'android'
+        }
+    }
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.northmeter.smartenergyregulation"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    androidTestCompile('com.android.support:support-annotations:26.1.0') { force = true }
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //控件绑定
+    compile 'com.jakewharton:butterknife:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+
+    implementation 'com.google.code.gson:gson:2.2.4'
+    compile 'com.lzy.net:okgo:3.0.4'
+    //刷新弹窗
+    compile 'com.github.ForgetAll:LoadingDialog:v1.0.4'
+    //下拉刷新
+    compile 'com.huxq17.xrefreshview:xrefreshview:3.6.9'
+    //evenbus
+    compile 'org.greenrobot:eventbus:3.0.0'
+}

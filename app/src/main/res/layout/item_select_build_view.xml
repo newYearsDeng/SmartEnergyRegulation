@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/relative_content"
+        android:background="@drawable/content_background_dash"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="30dp">
+        <TextView
+            android:id="@+id/tv_progect_addr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/iv_show"
+            android:background="@null"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            tools:text="深圳市"/>
+
+        <ImageView
+            android:id="@+id/iv_show"
+            android:layout_width="14dp"
+            android:layout_height="11dp"
+            android:layout_marginRight="14dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/record_import_down_select"/> />
+    </RelativeLayout>
+
+</LinearLayout>

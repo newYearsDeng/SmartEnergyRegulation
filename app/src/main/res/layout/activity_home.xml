@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/image_background">
+
+    <include layout="@layout/activity_toolbar_normal_title"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.andview.refreshview.XRefreshView
+            android:id="@+id/x_refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dividerHeight="1dp"
+                android:layerType="software"
+                android:scrollbarSize="1px"
+                android:scrollbarThumbVertical="@color/color_little_gray"
+                tools:listitem="@layout/item_main_build" />
+        </com.andview.refreshview.XRefreshView>
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

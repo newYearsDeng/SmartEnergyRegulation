@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_login_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/login_back_1">
+
+    <LinearLayout
+        android:layout_marginBottom="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--账号框-->
+        <RelativeLayout
+            android:id="@+id/relative_acount"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="45dp">
+
+            <ImageView
+                android:id="@+id/icon_tel"
+                android:layout_width="15dp"
+                android:layout_height="16dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/login_users" />
+
+            <EditText
+                android:id="@+id/et_login_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_toLeftOf="@+id/iv_delete"
+                android:layout_toRightOf="@+id/icon_tel"
+                android:background="@null"
+                android:hint="请输入账户名称"
+                android:inputType="text"
+                android:lines="1"
+                android:text=""
+                android:textColor="@color/white"
+                android:textColorHint="#888888"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/iv_delete"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10px"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_delete" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="1dp"
+            android:background="#E6E6E6"
+            />
+
+        <!--密码框-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            >
+            <ImageView
+                android:id="@+id/icon_check"
+                android:scaleType="centerCrop"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="14dp"
+                android:layout_height="16dp"
+                android:src="@drawable/login_passwd"/>
+            <EditText
+                android:id="@+id/et_login_passwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/icon_check"
+                android:layout_toLeftOf="@+id/iv_show"
+                android:layout_marginLeft="14dp"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:text=""
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:hint="请输入账户密码"
+                android:textColorHint="#888888"/>
+
+            <ImageView
+                android:id="@+id/iv_show"
+                android:layout_width="18dp"
+                android:layout_height="12dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10px"
+                android:src="@drawable/login_air"/> />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="1dp"
+            android:background="#E6E6E6" />
+
+        <!--登录-->
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/selector_sure_button_bg"
+            android:text="登  录"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="top|center"
+    android:background="@drawable/image_background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_toolbar_normal_title"/>
+
+    <RelativeLayout
+        android:id="@+id/relative_acount"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="11dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/content_background_trans">
+        <ImageView
+            android:id="@+id/icon_tel"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            android:layout_width="15dp"
+            android:layout_height="16dp"
+            android:src="@drawable/icon_search"/>
+        <EditText
+            android:id="@+id/et_search_name"
+            android:layout_toRightOf="@+id/icon_tel"
+            android:layout_toLeftOf="@+id/tv_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:background="@null"
+            android:hint="搜索建筑"
+            android:inputType="text"
+            android:lines="1"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:textColorHint="#888888"/>
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="#888888"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.andview.refreshview.XRefreshView
+                android:id="@+id/x_refresh_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp"
+                    android:dividerHeight="1dp"
+                    android:layerType="software"
+                    android:scrollbarSize="1px"
+                    android:scrollbarThumbVertical="@color/color_little_gray"
+                    tools:listitem="@layout/item_build_list"/>
+            </com.andview.refreshview.XRefreshView>
+
+            <TextView
+                android:id="@+id/tv_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="暂无数据"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

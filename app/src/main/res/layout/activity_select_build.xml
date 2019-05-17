@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/image_background">
+
+    <include layout="@layout/activity_toolbar_normal_title"
+             android:id="@+id/normal_title"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/normal_title"
+        android:layout_above="@+id/btn_submit"
+        android:scrollbarSize="1px"
+        android:scrollbarThumbVertical="@color/color_little_gray">
+        <LinearLayout
+            android:id="@+id/linear_contain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_margin="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/selector_sure_button_bg"
+        android:text="确 定"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</RelativeLayout>
