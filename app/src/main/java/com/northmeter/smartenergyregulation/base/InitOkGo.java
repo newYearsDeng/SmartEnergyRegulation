@@ -115,6 +115,7 @@ public class InitOkGo {
         public boolean verify(String hostname, SSLSession session) {
             //验证主机名是否匹配
             //return hostname.equals("server.jeasonlzy.com");
+            System.out.println("=======================return ture");
             return true;
         }
     }

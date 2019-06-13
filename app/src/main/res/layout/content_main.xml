@@ -4,17 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_bottom_back"
+    android:paddingTop="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.northmeter.smartenergyregulation.MainActivity"
+    tools:context=".activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:background="@color/white"
+        android:id="@+id/linear_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/ll_warn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/image_main_warn" />
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_text_gray"
+                android:textSize="12sp"
+                android:text="当前告警" />
+        </LinearLayout>
+        <View
+            android:layout_height="match_parent"
+            android:layout_width="1dp"
+            android:background="#ededee"/>
+        <LinearLayout
+            android:id="@+id/ll_history"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/image_main_history" />
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_text_gray"
+                android:textSize="12sp"
+                android:text="历史告警" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@+id/linear_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scrollbarSize="1px"
+        android:padding="10dp"
+        android:scrollbarThumbVertical="@color/color_little_gray">
+
+        <include layout="@layout/item_contentmain_show_view" />
+
+    </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

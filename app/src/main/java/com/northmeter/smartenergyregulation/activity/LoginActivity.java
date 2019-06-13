@@ -15,6 +15,7 @@ import com.northmeter.smartenergyregulation.presenter.LoginPresenter;
 import com.northmeter.smartenergyregulation.utils.SaveUserInfo;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -37,6 +38,7 @@ public class LoginActivity extends BaseActivity implements I_ShowData {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -88,7 +90,7 @@ public class LoginActivity extends BaseActivity implements I_ShowData {
     public void showData(CommonResponse commonResponse) {
         LoginResponse loginResponse = (LoginResponse) commonResponse;
         if (loginResponse.getCode()==0){
-            goActivity(HomeActivity.class);
+            goActivity(MainActivity.class);
         }
     }
 

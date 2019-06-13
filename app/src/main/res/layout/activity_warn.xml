@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_blue"
+        android:fitsSystemWindows="true">
+        <include layout="@layout/activity_toolbar_normal_title"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_show_date"
+        android:visibility="gone"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_socket_text"
+            android:textSize="12sp"
+            android:text="开始"/>
+        <RelativeLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:padding="5dp"
+            android:background="@drawable/content_background_green"
+            android:gravity="left|center_vertical" >
+            <TextView
+                android:id="@+id/tv_time_action_star"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:text="2019"
+                android:ems="10"
+                android:textSize="12sp"
+                android:textColor="@color/color_socket_text"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/image_socket_date" />
+        </RelativeLayout>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_socket_text"
+            android:textSize="12sp"
+            android:text="结束"/>
+        <RelativeLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:padding="5dp"
+            android:background="@drawable/content_background_green"
+            android:gravity="left|center_vertical" >
+            <TextView
+                android:id="@+id/tv_time_action_end"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:text="2019"
+                android:ems="10"
+                android:textSize="12sp"
+                android:textColor="@color/color_socket_text"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/image_socket_date" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:background="@color/color_bottom_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.andview.refreshview.XRefreshView
+            android:id="@+id/x_refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:dividerHeight="5px"
+                android:layerType="software"
+                android:scrollbarSize="1px"
+                android:scrollbarThumbVertical="@color/color_little_gray"
+                tools:listitem="@layout/item_warn_list" />
+        </com.andview.refreshview.XRefreshView>
+
+        <ImageView
+            android:id="@+id/iv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_null"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

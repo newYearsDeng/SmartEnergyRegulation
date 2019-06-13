@@ -6,7 +6,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#333333</color>
-    <color name="color_blue">#0086de</color>
+    <color name="color_blue">#585de7</color>
     <color name="line_color">#486695</color>
 
     <!--浅灰色-->
@@ -21,7 +21,7 @@
     <color name="color_text_back">#4462A4</color>
 
     <!--按钮颜色-->
-    <color name="color_login_button">#22C99E</color>
+    <color name="color_login_button">#192E4D</color>
     <!--界面底色-->
     <color name="color_main_back">#F5F5F5</color>
     <!--提示文字颜色-->
@@ -37,5 +37,18 @@
     <color name="transparent">#00000000</color>
 
     <color name="province_line_border">#D0D0D0</color>
+
+    <color name="color_bottom_back">#ededee</color>
+    <color name="color_text_gray">#706e6e</color>
+
+    <color name="color_progress_main_back">#e9edf5</color>
+    <color name="color_progress_con">#5bd1b1</color>
+    <color name="color_progress_met">#49a2f9</color>
+    <color name="color_progress_back">#838bef</color>
+    <color name="color_socket_text">#5A5959</color>
+
+    <color name="color_barchart">#e54243</color>
+    <color name="color_barchart_top">#f97c7c</color>
+
 
 </resources>

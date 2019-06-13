@@ -1,133 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/fragment_socket_info">
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
+    <LinearLayout
+        android:padding="20dp"
+        android:background="@color/white"
+        android:id="@+id/layout_dialog"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/layout_dialog"
+        <ImageView
+            android:id= "@+id/img_view_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/device_center_back"
-            android:gravity="center_horizontal|center"
-            android:orientation="vertical" >
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/img_socket_new_icon"/>
 
-            <ImageView
-                android:id= "@+id/img_view_icon"
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/img_socket_icon"/>
-
-            <View
-                android:id="@+id/air_view_show"
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:alpha="0.5"
-                android:background="@color/white"/>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="right|center_vertical"
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView2_air"
+                    android:textSize="14sp"
                     style="@style/message_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imageView_icon"
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/imageView_icon"
-                    android:text="电量:"
-                    android:textColor="#FFFFFF" />
+                    android:text="功率:" />
 
                 <TextView
-                    android:id="@+id/item0"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_title_gl"
                     style="@style/message_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/textView2_air"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/textView2_air"
-                    android:text="--kwh"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/textView3_air"
-                    style="@style/message_texts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/textView6"
-                    android:layout_below="@+id/textView6"
-                    android:layout_marginTop="1dp"
-                    android:text="功率:"
-                    android:textColor="#FFFFFF" />
-
-                <TextView
-                    android:id="@+id/item1"
-                    style="@style/message_texts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/textView3_air"
-                    android:layout_alignBottom="@+id/textView3_air"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/textView3_air"
                     android:text="--W"
-                    android:textColor="#FFFFFF" />
+                    />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="left|center_vertical"
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textView5_1"
+                    android:textSize="14sp"
                     style="@style/message_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:text="电流:"
-                    android:textColor="#FFFFFF" />
+                    android:text="状态:" />
 
                 <TextView
-                    android:id="@+id/item3"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_title_zt"
                     style="@style/message_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/item2"
                     android:layout_marginLeft="5dp"
-                    android:text="--A"
-                    android:textColor="#FFFFFF" />
+                    android:text="无" />
             </LinearLayout>
         </LinearLayout>
 
 
+
+
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/check_box_control"
             android:layout_below="@+id/layout_dialog"
-            android:layout_alignLeft="@+id/layout_dialog"
-            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_socket_checkbox_style"
@@ -135,14 +94,15 @@
             android:text="@null" />
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/img_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layout_dialog"
             android:layout_alignRight="@+id/layout_dialog"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="22dp"
             android:src="@drawable/socket_refresh_style" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.TextView;
 
 import com.northmeter.smartenergyregulation.R;
 import com.northmeter.smartenergyregulation.base.BaseActivity;
+import com.northmeter.smartenergyregulation.fragment.Fragment_Socket_Chart;
 import com.northmeter.smartenergyregulation.fragment.Fragment_Socket_Info;
 import com.northmeter.smartenergyregulation.widget.EmptyFragmentPagerAdapter;
 import com.northmeter.smartenergyregulation.widget.NoScrollViewPager;
@@ -52,13 +54,14 @@ public class DeviceMainActivity extends BaseActivity {
     @Override
     public void setTitle() {
         super.setTitle();
+        tvToolbarTitle.setText("智能插座");
     }
 
     @Override
     public void initData() {
         super.initData();
-        fragments.add(Fragment_Socket_Info.newInstance(0));//加载未完成项目列表
-        fragments.add(Fragment_Socket_Info.newInstance(0));//加载未完成项目列表
+        fragments.add(Fragment_Socket_Info.newInstance(0));
+        fragments.add(Fragment_Socket_Chart.newInstance(0));
         mTitles = new String[]{"实时状态", "视图分析"};
         adapter = new EmptyFragmentPagerAdapter(getSupportFragmentManager(), fragments, mTitles);
         vpEmpty.setAdapter(adapter);
@@ -72,6 +75,11 @@ public class DeviceMainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.btn_tb_back)
-    public void onViewClicked() {
+    public void onViewClicked(View v) {
+        switch(v.getId()){
+            case R.id.btn_tb_back:
+                this.finish();
+                break;
+        }
     }
 }

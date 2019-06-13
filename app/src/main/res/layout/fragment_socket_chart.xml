@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:gravity="center_vertical"
+        android:id="@+id/linear_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_socket_text"
+            android:textSize="12sp"
+            android:text="类型"/>
+        <RelativeLayout
+            android:id="@+id/rl_type_action"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/content_background_green"
+            android:gravity="left|center_vertical" >
+            <TextView
+                android:id="@+id/tv_type_action"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:text="功率"
+                android:ems="10"
+                android:paddingLeft="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/color_socket_text"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/image_socket_down" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="日期"
+            android:textColor="@color/color_socket_text"
+            android:textSize="12sp" />
+        <RelativeLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:padding="5dp"
+            android:background="@drawable/content_background_green"
+            android:gravity="left|center_vertical" >
+            <TextView
+                android:id="@+id/tv_time_action_star"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:text="2019-06-10"
+                android:ems="10"
+                android:textSize="12sp"
+                android:textColor="@color/color_socket_text"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/image_socket_date" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginRight="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:padding="5dp"
+            android:background="@drawable/content_background_green"
+            android:gravity="left|center_vertical" >
+            <TextView
+                android:id="@+id/tv_time_action_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                tools:text="2019-06-10"
+                android:ems="10"
+                android:textSize="12sp"
+                android:textColor="@color/color_socket_text"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/image_socket_date" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="1px"
+        android:scrollbarThumbVertical="@color/color_little_gray">
+        <LinearLayout
+            android:id="@+id/relative_acount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="10dp"
+                android:padding="20dp" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="10dp"
+                android:padding="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

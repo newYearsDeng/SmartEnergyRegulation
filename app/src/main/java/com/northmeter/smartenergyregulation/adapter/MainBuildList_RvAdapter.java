@@ -7,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.northmeter.smartenergyregulation.R;
-import com.northmeter.smartenergyregulation.bean.BuildListBean;
+import com.northmeter.smartenergyregulation.bean.MonitorBean;
 
 import java.util.List;
 
@@ -19,9 +18,19 @@ import java.util.List;
 
 public class MainBuildList_RvAdapter extends RecyclerView.Adapter {
     private Context context;
-    private List<BuildListBean.BuildList> models;
+    private List<MonitorBean.Page.BuildList> models;
 
-    public MainBuildList_RvAdapter(Context context,List<BuildListBean.BuildList> models) {
+    public interface OnMyClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    public OnMyClickListener onClickListener;
+
+    public void setOnMyClickListener(OnMyClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public MainBuildList_RvAdapter(Context context,List<MonitorBean.Page.BuildList> models) {
         this.context = context;
         this.models = models;
     }
@@ -63,16 +72,17 @@ public class MainBuildList_RvAdapter extends RecyclerView.Adapter {
         }
 
 
-        public void setData(BuildListBean.BuildList bean) {
-            itemHomeListName.setText(bean.getBuildingname());
+        public void setData(MonitorBean.Page.BuildList bean) {
+            itemHomeListName.setText(bean.getBuidingname());
         }
 
 
         @Override
         public void onClick(View v) {
             if (models.get(getLayoutPosition()) != null) {
-//                Device device = devices.get(getLayoutPosition());
-//                ActivityControlMain.openActivity(context, device.type, device.meterCode, device.mac);
+
+                onClickListener.onItemClick(v,getLayoutPosition());
+
             }
         }
 

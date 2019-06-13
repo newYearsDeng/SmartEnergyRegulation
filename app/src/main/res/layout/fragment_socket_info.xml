@@ -1,119 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_bottom_back"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <include layout="@layout/socket_device_info_title"/>
+
+    <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbarSize="1dp"
-        android:scrollbarThumbVertical="@color/line_color">
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/color_socket_text"
+            android:text="设备信息"/>
 
         <LinearLayout
+            android:layout_height="200dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <include layout="@layout/socket_device_info_title"/>
+            android:padding="10dp"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/linear_action_1"
-                android:layout_marginTop="10dp"
-                android:visibility="visible"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设备状态:" />
+
+                    <TextView
+                        android:id="@+id/tv_statement"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="正常"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开关状态:" />
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="跳闸"
+                        />
+                </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal" >
                     <TextView
-                        android:paddingLeft="20dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.4"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="开机时间"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:text="电能:" />
+
+                    <TextView
+                        android:id="@+id/tv_watts"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="--kWh"
                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
                     <TextView
-                        android:id="@+id/time_on"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.6"
-                        android:paddingLeft="10dp"
-                        android:gravity="left|center_vertical"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="——"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:text="功率:" />
+
+                    <TextView
+                        android:id="@+id/tv_powertotal"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="--W"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电压:" />
+
+                    <TextView
+                        android:id="@+id/tv_voltage"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="--V"
                         />
                 </LinearLayout>
                 <LinearLayout
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal" >
                     <TextView
-                        android:paddingLeft="20dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.4"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="工作时长"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
+                        android:text="电流:" />
+
                     <TextView
-                        android:id="@+id/time_continue"
-                        android:paddingLeft="10dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.6"
+                        android:id="@+id/tv_current"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="left|center_vertical"
-                        android:text="——"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:layout_marginLeft="5dp"
+                        tools:text="--A"
                         />
                 </LinearLayout>
-                <LinearLayout
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:paddingLeft="20dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.4"
-                        android:layout_height="wrap_content"
-                        android:text="关机时间"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
-                    <TextView
-                        android:id="@+id/time_off"
-                        android:paddingLeft="10dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.6"
-                        android:gravity="left|center_vertical"
-                        android:layout_height="wrap_content"
-                        android:text="——"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
-                </LinearLayout>
+
+
 
             </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="频率:" />
+
+                    <TextView
+                        android:id="@+id/tv_frequency"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="50Hz"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="环境温度:" />
+
+                    <TextView
+                        android:id="@+id/tv_temperature"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="--℃"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="功率下限:" />
+
+                    <TextView
+                        android:id="@+id/tv_glxx"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="1"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="功率因数:" />
+
+                    <TextView
+                        android:id="@+id/tv_powerfactor"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="1.0"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设备编号:" />
+
+                    <TextView
+                        android:id="@+id/tv_comaddress"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        tools:text="000000000000"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                    <TextView
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="刷新时间:" />
+
+                    <TextView
+                        android:id="@+id/tv_updatetime"
+                        style="@style/message_texts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="2019-03-13 15:29:29"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

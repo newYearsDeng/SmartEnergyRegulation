@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     signingConfigs {
         config {
@@ -14,6 +15,10 @@ android {
         }
     }
     compileSdkVersion 26
+    //签名打包时检查png有异常，Androidstudio严格审查png图片，禁止Gradle检查PNG的合法性
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
     defaultConfig {
         applicationId "com.northmeter.smartenergyregulation"
         minSdkVersion 19
@@ -37,7 +42,7 @@ android {
 }
 
 dependencies {
-    androidTestCompile('com.android.support:support-annotations:26.1.0') { force = true }
+    androidTestImplementation('com.android.support:support-annotations:26.1.0') { force = true }
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -47,15 +52,18 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //控件绑定
-    compile 'com.jakewharton:butterknife:8.7.0'
+    implementation 'com.jakewharton:butterknife:8.7.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
     implementation 'com.google.code.gson:gson:2.2.4'
-    compile 'com.lzy.net:okgo:3.0.4'
+    implementation 'com.lzy.net:okgo:3.0.4'
     //刷新弹窗
-    compile 'com.github.ForgetAll:LoadingDialog:v1.0.4'
+    implementation 'com.github.ForgetAll:LoadingDialog:v1.0.4'
     //下拉刷新
-    compile 'com.huxq17.xrefreshview:xrefreshview:3.6.9'
+    implementation 'com.huxq17.xrefreshview:xrefreshview:3.6.9'
     //evenbus
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
+    //图表 MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

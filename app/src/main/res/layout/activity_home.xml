@@ -3,36 +3,260 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    android:background="@drawable/image_background">
+    android:orientation="vertical">
 
-    <include layout="@layout/activity_toolbar_normal_title"/>
-
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.andview.refreshview.XRefreshView
-            android:id="@+id/x_refresh_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/listview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:dividerHeight="1dp"
-                android:layerType="software"
-                android:scrollbarSize="1px"
-                android:scrollbarThumbVertical="@color/color_little_gray"
-                tools:listitem="@layout/item_main_build" />
-        </com.andview.refreshview.XRefreshView>
+        android:layout_height="270dp"
+        android:background="@color/color_blue"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/activity_toolbar_normal_title"/>
+
+
+        <com.northmeter.smartenergyregulation.view.CirclePercentView
+            android:id="@+id/circle_percent_view"
+            android:layout_centerInParent="true"
+            android:layout_width="120dp"
+            android:layout_height="120dp" />
         <TextView
-            android:id="@+id/tv_empty"
+            android:id="@+id/tv_percent_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_below="@+id/tv_percent_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:layout_centerInParent="true"
+            android:text="正常率"/>
+
+        <LinearLayout
+            android:id="@+id/layout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_device_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    tools:text="10"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:visibility="invisible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/content_background_oval_yello"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:text="设备总数"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_device_normalnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    tools:text="6"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/content_background_oval_yello"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:text="正常数"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_device_abnormalnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    tools:text="4"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/content_background_oval_red"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:text="异常数"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:visibility="gone"
+        android:id="@+id/horizonscroll_view"
+        android:background="@color/color_bottom_back"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/normal_title"
+        android:layout_above="@+id/btn_submit"
+        android:scrollbarSize="1px"
+        android:scrollbarThumbVertical="@color/color_little_gray">
+        <LinearLayout
+            android:id="@+id/linear_contain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="暂无数据"
-            android:visibility="gone" />
-    </FrameLayout>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:padding="5dp"
+                android:background="@color/color_bottom_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/color_progress_con"
+                android:text="建筑列表"/>
+
+            <FrameLayout
+                android:background="@color/color_bottom_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/listview"
+                    android:background="@color/color_bottom_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:dividerHeight="1dp"
+                    android:layerType="software"
+                    android:scrollbarSize="1px"
+                    android:scrollbarThumbVertical="@color/color_little_gray"
+                    tools:listitem="@layout/item_main_build" />
+                <ImageView
+                    android:id="@+id/iv_empty_build"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_null"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <TextView
+                android:padding="5dp"
+                android:background="@color/color_bottom_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="@color/color_progress_con"
+                android:text="设备列表"/>
+            <FrameLayout
+                android:background="@color/color_bottom_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/listview_device"
+                    android:background="@color/color_bottom_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:dividerHeight="1dp"
+                    android:layerType="software"
+                    android:scrollbarSize="1px"
+                    android:scrollbarThumbVertical="@color/color_little_gray"
+                    tools:listitem="@layout/item_main_device" />
+                <ImageView
+                    android:id="@+id/iv_empty_device"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_null"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
 
 </LinearLayout>

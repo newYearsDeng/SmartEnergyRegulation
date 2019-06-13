@@ -76,7 +76,7 @@ public abstract  class BaseFragment extends Fragment {
      */
     protected abstract void finishCreateView(Bundle savedInstanceState);
 
-    protected void showMsg(String msg) {
+    protected void showToastMsg(String msg) {
         ToastUtil.showToastShort(context, msg);
     }
 

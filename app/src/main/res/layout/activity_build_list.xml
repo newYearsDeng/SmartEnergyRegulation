@@ -39,7 +39,7 @@
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
             android:background="@null"
-            android:hint="搜索建筑"
+            android:hint="搜索设备"
             android:inputType="text"
             android:lines="1"
             android:textSize="14sp"
@@ -80,12 +80,15 @@
                     tools:listitem="@layout/item_build_list"/>
             </com.andview.refreshview.XRefreshView>
 
-            <TextView
+            <ImageView
                 android:id="@+id/tv_empty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/img_no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
                 android:gravity="center"
-                android:text="暂无数据"
                 android:visibility="gone" />
         </FrameLayout>
 

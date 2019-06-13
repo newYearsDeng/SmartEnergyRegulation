@@ -44,7 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.WarnActivity"/>
         <activity android:name=".activity.BuildListActivity"/>
         <activity android:name=".activity.DeviceMainActivity"/>
         <activity android:name=".activity.SelectBuildActivity"/>

@@ -5,8 +5,7 @@ package com.northmeter.smartenergyregulation.Interface;
  */
 
 public interface I_HomePresenter {
-    void getBuildList(int withMeter,String mtEquipmentTypeID,String buildingID);
     void getMonitor(String mtEquipmentTypeID);
-
     void getallleafmonitor(String buildingid);
+
 }

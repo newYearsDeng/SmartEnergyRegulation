@@ -14,10 +14,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.northmeter.smartenergyregulation.Interface.I_ShowData;
 import com.northmeter.smartenergyregulation.R;
 import com.northmeter.smartenergyregulation.adapter.CommonAdapter;
@@ -51,13 +47,10 @@ public class SelectBuildActivity extends BaseActivity implements I_ShowData {
     LinearLayout linearContain;
 
     private ListView listview;//点击建筑按钮是显示的列表
-    private int projectId;
     private View view;
     private PopupWindow popupWindow;
-    private Gson gson = new Gson();
-    private JsonParser parser = new JsonParser() ;
     private Map<Integer,List<SelectBuildBean.TreeBuild>> btnAndListMap;//存储每个建筑按钮的建筑列表
-    private Map<Object,SelectBuildBean.TreeBuild> btnSelectMap;//存储选择的子节点建筑信息
+    private Map<Object,SelectBuildBean.TreeBuild> btnSelectMap;//存储选择的建筑信息
     private Map<Integer,Integer> typeList;//判断当前btnSelectMap相同key值的建筑信息父节点建筑还是子节点建筑
     private CommonAdapter commonAdapter;
     private List<SelectBuildShow> buildDatas;
@@ -66,7 +59,7 @@ public class SelectBuildActivity extends BaseActivity implements I_ShowData {
     private List<ViewHolder> viewHolderList;
     private int mark=0;
     private static int checkViewHolder=0;
-    private static int childChoose = 0;
+    private String checkedBuild = "0";
 
     private SelectBuildPresenter selectBuildPresenter;
 
@@ -95,13 +88,11 @@ public class SelectBuildActivity extends BaseActivity implements I_ShowData {
 
         viewList = new ArrayList<>();
         viewHolderList = new ArrayList<>();
-
-
+        
         buildDatas = new ArrayList<>();
         btnAndListMap = new HashMap<>();//存储默认加载的PopupWindow的建筑列表
         btnSelectMap = new HashMap();//选择建筑后存储该建筑信息
         typeList = new HashMap<>();
-        typeList.put(mark,0);
 
         initpopupWindow();
     }
@@ -128,6 +119,10 @@ public class SelectBuildActivity extends BaseActivity implements I_ShowData {
                 break;
 
             case R.id.btn_submit://提交
+                Intent i = new Intent();
+                i.putExtra("result",checkedBuild);
+                setResult(RESULT_OK,i);
+                finish();
                 break;
         }
     }
@@ -151,23 +146,24 @@ public class SelectBuildActivity extends BaseActivity implements I_ShowData {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 if(typeList.get(mark-1)==0){
                     viewHolderList.get(checkViewHolder).tv_progect_addr.setText(buildDatas.get(position).getBuildingname());
+                    if(buildDatas.get(position).getIsleaf()==0){
+                        checkedBuild = btnAndListMap.get(mark-1).get(position).getBuildinginfoEntityList().get(0).getBuildingid();
+                        initAddView(mark, btnAndListMap.get(mark-1).get(position).getBuildinginfoEntityList().get(0).getBuildingname());
+                        //btnAndListMap.put(mark, btnAndListMap.get(mark-1));
+                        typeList.put(mark,1);
+                        btnSelectMap.put(mark-1,btnAndListMap.get(mark-1).get(position));
+                        mark++;
 
-                    initAddView(mark, btnAndListMap.get(mark-1).get(position).getBuildinginfoEntityList().get(0).getBuildingname());
-                    typeList.put(mark,1);
-                    btnSelectMap.put(mark-1,btnAndListMap.get(mark-1).get(position));
-                    mark++;
-                    popupWindow.dismiss();
+                    }
                 }else{
                     if (buildDatas.get(position).getIsleaf()==0){
-                        childChoose = position;
                         selectBuildPresenter.getTreeBuild(1,"001008",buildDatas.get(position).getBuildingid());
+                        checkedBuild  = buildDatas.get(position).getBuildingid();
                     }
-                    popupWindow.dismiss();
                 }
-
+                popupWindow.dismiss();
             }
         });
     }
@@ -265,12 +261,14 @@ public class SelectBuildActivity extends BaseActivity implements I_ShowData {
                 btnAndListMap.put(mark,treeBuildList);
                 typeList.put(mark,0);
                 btnSelectMap.put(mark,treeBuildList.get(0));
+                checkedBuild = treeBuildList.get(0).getBuildingid();
                 mark++;
             }else{
                 initAddView(mark, treeBuildList.get(0).getBuildinginfoEntityList().get(0).getBuildingname());
                 btnAndListMap.put(mark, treeBuildList);
                 typeList.put(mark,1);
                 btnSelectMap.put(mark-1,treeBuildList.get(0));
+                checkedBuild = treeBuildList.get(0).getBuildinginfoEntityList().get(0).getBuildingid();
                 mark++;
             }
 

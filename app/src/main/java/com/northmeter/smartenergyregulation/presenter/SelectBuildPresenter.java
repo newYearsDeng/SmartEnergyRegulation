@@ -9,7 +9,6 @@ import com.lzy.okgo.model.Response;
 import com.northmeter.smartenergyregulation.Interface.I_SelectBuildPresenter;
 import com.northmeter.smartenergyregulation.Interface.I_ShowData;
 import com.northmeter.smartenergyregulation.base.API;
-import com.northmeter.smartenergyregulation.bean.BuildListBean;
 import com.northmeter.smartenergyregulation.bean.SelectBuildBean;
 import com.northmeter.smartenergyregulation.http.DialogCallback;
 import com.northmeter.smartenergyregulation.utils.SaveUserInfo;
