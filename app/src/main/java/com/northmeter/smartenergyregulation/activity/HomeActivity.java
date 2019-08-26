@@ -3,10 +3,6 @@ package com.northmeter.smartenergyregulation.activity;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +13,11 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.northmeter.smartenergyregulation.Interface.I_ShowHome;
 import com.northmeter.smartenergyregulation.R;
 import com.northmeter.smartenergyregulation.adapter.MainBuildList_RvAdapter;
@@ -26,6 +27,7 @@ import com.northmeter.smartenergyregulation.bean.AllbuildingmonitorBean;
 import com.northmeter.smartenergyregulation.bean.AllleafmonitorBean;
 import com.northmeter.smartenergyregulation.bean.MonitorBean;
 import com.northmeter.smartenergyregulation.presenter.HomePresenter;
+import com.northmeter.smartenergyregulation.utils.SharedPreferencesUtil;
 import com.northmeter.smartenergyregulation.view.CirclePercentView;
 
 import java.math.BigDecimal;
@@ -120,7 +122,16 @@ public class HomeActivity extends BaseActivity implements I_ShowHome {
         initListView();
         //new HomePresenter(this).getBuildList(1,"001008","");
         //new HomePresenter(this).getallleafmonitor("001000001000001000005");
-        homePresenter.getMonitor("001008");
+
+        //homePresenter.getMonitor("001008");
+
+        //homePresenter.getTree("");
+        homePresenter.getsametypeeq("004");
+
+        /**
+         * 001008  插座
+         * 001006 分体空调控制器
+         * */
 
     }
 
@@ -277,7 +288,7 @@ public class HomeActivity extends BaseActivity implements I_ShowHome {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent();
-
+                intent.putExtra("checkBuildId",deviceDatas.get(position).getBulidingid());
                 for (AllleafmonitorBean.MeterList item : leafmonitorList) {
                     if (item.getComaddress().equals(deviceDatas.get(position).getComAddress())) {
                         intent.putExtra("meterData", item);

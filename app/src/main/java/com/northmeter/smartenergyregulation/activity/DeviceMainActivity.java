@@ -1,12 +1,13 @@
 package com.northmeter.smartenergyregulation.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.tabs.TabLayout;
 import com.northmeter.smartenergyregulation.R;
 import com.northmeter.smartenergyregulation.base.BaseActivity;
 import com.northmeter.smartenergyregulation.fragment.Fragment_Socket_Chart;
@@ -62,7 +63,7 @@ public class DeviceMainActivity extends BaseActivity {
         super.initData();
         fragments.add(Fragment_Socket_Info.newInstance(0));
         fragments.add(Fragment_Socket_Chart.newInstance(0));
-        mTitles = new String[]{"实时状态", "视图分析"};
+        mTitles = new String[]{"设备状态", "视图分析"};
         adapter = new EmptyFragmentPagerAdapter(getSupportFragmentManager(), fragments, mTitles);
         vpEmpty.setAdapter(adapter);
         tlEmpty.setupWithViewPager(vpEmpty);

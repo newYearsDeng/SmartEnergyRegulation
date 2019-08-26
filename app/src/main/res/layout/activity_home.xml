@@ -199,15 +199,17 @@
                 android:background="@color/color_bottom_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listview"
                     android:background="@color/color_bottom_back"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="300dp"
                     android:dividerHeight="1dp"
                     android:layerType="software"
-                    android:scrollbarSize="1px"
-                    android:scrollbarThumbVertical="@color/color_little_gray"
+                    android:scrollbarSize="2dp"
+                    android:scrollbars="vertical"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbarThumbVertical="@color/color_progress_con"
                     tools:listitem="@layout/item_main_build" />
                 <ImageView
                     android:id="@+id/iv_empty_build"
@@ -231,15 +233,17 @@
                 android:background="@color/color_bottom_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listview_device"
                     android:background="@color/color_bottom_back"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:dividerHeight="1dp"
                     android:layerType="software"
-                    android:scrollbarSize="1px"
-                    android:scrollbarThumbVertical="@color/color_little_gray"
+                    android:scrollbarSize="2dp"
+                    android:scrollbars="vertical"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbarThumbVertical="@color/color_progress_con"
                     tools:listitem="@layout/item_main_device" />
                 <ImageView
                     android:id="@+id/iv_empty_device"

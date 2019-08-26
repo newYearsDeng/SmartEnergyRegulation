@@ -18,6 +18,7 @@ import com.northmeter.smartenergyregulation.bean.AllleafmonitorBean;
 import com.northmeter.smartenergyregulation.bean.MonitorHistoryBean;
 import com.northmeter.smartenergyregulation.presenter.DeviceMainPresenter;
 import com.northmeter.smartenergyregulation.utils.SharedPreferencesUtil;
+import com.northmeter.smartenergyregulation.widget.CommonDialog;
 
 import java.util.List;
 
@@ -69,6 +70,7 @@ public class Fragment_Socket_Info extends BaseFragment implements I_ShowDevice {
     TextView tvUpdatetime;
     private String checkBuildId;
     DeviceMainPresenter deviceMainPresenter;
+    private CommonDialog commonDialog;
 
     public static Fragment_Socket_Info newInstance(int getType) {
         fragment = new Fragment_Socket_Info();
@@ -85,7 +87,7 @@ public class Fragment_Socket_Info extends BaseFragment implements I_ShowDevice {
 
     @Override
     protected void startGetArgument(Bundle savedInstanceState) {
-        checkBuildId = SharedPreferencesUtil.getPrefString(getActivity(), "checkBuildId", "001");
+        checkBuildId = getActivity().getIntent().getStringExtra("checkBuildId");
         meterData = (AllleafmonitorBean.MeterList) getActivity().getIntent().getSerializableExtra("meterData");
         deviceMainPresenter = new DeviceMainPresenter(getActivity(), Fragment_Socket_Info.this);
 
@@ -99,16 +101,16 @@ public class Fragment_Socket_Info extends BaseFragment implements I_ShowDevice {
 
     private void showSocketData(AllleafmonitorBean.MeterList meterData) {
         if(meterData!=null){
-            tvTitleGl.setText(meterData.getPowertotal()+"W");
+            tvTitleGl.setText(meterData.getPowertotal()+"kW");
             tvTitlezt.setText(meterData.getStatus());
-            tvTitlezt.setTextColor(meterData.getStatus().equals("跳闸") ? Color.RED : Color.BLACK);
+            tvTitlezt.setTextColor(meterData.getStatus().equals("跳闸") ? Color.RED : Color.parseColor("#5A5959"));
             checkBoxControl.setChecked(meterData.getStatus().equals("合闸"));
 
             tvComaddress.setText(meterData.getComaddress());
             tvStatus.setText(meterData.getStatus());
             tvGlxx.setText(meterData.getGlxx()+"");
             tvStatement.setText(meterData.getStatement());
-            tvPowertotal.setText(meterData.getPowertotal()+"W");
+            tvPowertotal.setText(meterData.getPowertotal()+"kW");
             tvVoltage.setText(meterData.getVoltage()+"V");
             tvCurrent.setText(meterData.getCurrent()+"A");
             tvWatts.setText(meterData.getWatts()+"kWh");
@@ -183,13 +185,26 @@ public class Fragment_Socket_Info extends BaseFragment implements I_ShowDevice {
             case R.id.img_refresh:
                 break;
             case R.id.check_box_control:
-                String commandID = "3";
-                if (checkBoxControl.isChecked()) {
-                    commandID = "4";//合闸
-                } else {
-                    commandID = "3";//跳闸
-                }
-                deviceMainPresenter.controlRealSave(commandID, new String[]{checkBuildId}, new String[]{meterData.getComaddress()});
+                commonDialog = new CommonDialog(getActivity(),
+                        R.layout.dialog_devie_delete, "是否执行跳合闸操作？",new CommonDialog.CallBack() {
+                    @Override
+                    public void onConfirm() {
+                        String commandID = "3";
+                        if (checkBoxControl.isChecked()) {
+                            commandID = "4";//合闸
+                        } else {
+                            commandID = "3";//跳闸
+                        }
+                        deviceMainPresenter.controlRealSave(commandID, new String[]{checkBuildId}, new String[]{meterData.getComaddress()});
+                        commonDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        commonDialog.dismiss();
+                    }
+                });
+                commonDialog.show();
                 break;
         }
     }

@@ -49,6 +49,18 @@
         <item name="toolbarStyle">@style/ToolBarStyle</item>
     </style>
 
+    <!-- 普通对话框 自定义 -->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/image_dialog_bg</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
     <style name="message_texts">
         <item name="android:textColor">@color/color_socket_text</item>
         <item name="android:textSize">12sp</item>

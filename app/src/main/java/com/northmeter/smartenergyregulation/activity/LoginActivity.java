@@ -1,10 +1,11 @@
 package com.northmeter.smartenergyregulation.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.annotation.Nullable;
 
 import com.northmeter.smartenergyregulation.Interface.I_ShowData;
 import com.northmeter.smartenergyregulation.R;

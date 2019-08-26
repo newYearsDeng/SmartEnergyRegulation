@@ -4,16 +4,17 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 import com.northmeter.smartenergyregulation.Interface.I_ShowMain;
 import com.northmeter.smartenergyregulation.R;
 import com.northmeter.smartenergyregulation.base.BaseActivity;
@@ -186,7 +187,6 @@ public class MainActivity extends BaseActivity implements I_ShowMain {
         tvContentZyd.setText(String.valueOf(yearlyMount.getPowerNum()));
         tvContentZydje.setText(String.valueOf(yearlyMount.getPowerMount()));
         tvContentZsyje.setText(String.valueOf(yearlyMount.getWaterNum()));
-
     }
 
     @Override
@@ -253,7 +253,6 @@ public class MainActivity extends BaseActivity implements I_ShowMain {
         ObjectAnimator animator = ObjectAnimator.ofFloat(circleConcentrator, "percentage", 0, percentage);
         animator.setDuration(1000);
         animator.start();
-
     }
 
     private void setCircleMeter(int max, float current) {
@@ -263,7 +262,6 @@ public class MainActivity extends BaseActivity implements I_ShowMain {
         ObjectAnimator animator = ObjectAnimator.ofFloat(circleMeter, "percentage", 0, percentage);
         animator.setDuration(1000);
         animator.start();
-
     }
 
 }

@@ -3,7 +3,6 @@ package com.northmeter.smartenergyregulation.activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -11,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.andview.refreshview.XRefreshView;
 import com.northmeter.smartenergyregulation.Interface.I_ShowWarnData;

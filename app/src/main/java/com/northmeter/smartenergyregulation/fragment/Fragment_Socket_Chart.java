@@ -20,6 +20,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -89,6 +90,7 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
 
     AllleafmonitorBean.MeterList meterData;
     DeviceMainPresenter deviceMainPresenter;
+    private int meterID = 0;
 
 
     private View view;
@@ -116,6 +118,10 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
     @Override
     protected void startGetArgument(Bundle savedInstanceState) {
         meterData = (AllleafmonitorBean.MeterList) getActivity().getIntent().getSerializableExtra("meterData");
+        if(meterData!=null){
+            meterID = meterData.getMeterid();
+        }
+
     }
 
     @Override
@@ -139,7 +145,7 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
         //setChartData();
 
 
-        deviceMainPresenter.getMonitorHistory(meterData.getMeterid(), simpleDateFormat.format(date)+" 00:00:00", simpleDateFormat.format(date)+" 23:59:59");
+        deviceMainPresenter.getMonitorHistory(meterID, simpleDateFormat.format(date)+" 00:00:00", simpleDateFormat.format(date)+" 23:59:59");
     }
 
 
@@ -183,7 +189,7 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
                         String date = year +"-"+String.format("%02d", (monthOfYear+1))+"-"+String.format("%02d", dayOfMonth);
                         tvTimeActionStar.setText(date);
 
-                        deviceMainPresenter.getMonitorHistory(meterData.getMeterid() , tvTimeActionStar.getText()+" 00:00:00", tvTimeActionEnd.getText()+" 23:59:59");
+                        deviceMainPresenter.getMonitorHistory(meterID , tvTimeActionStar.getText()+" 00:00:00", tvTimeActionEnd.getText()+" 23:59:59");
                     }
                 }, new DialogInterface.OnDismissListener() {
                     @Override
@@ -197,7 +203,7 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String date = year +"-"+String.format("%02d", (monthOfYear+1))+"-"+String.format("%02d", dayOfMonth);
                         tvTimeActionEnd.setText(date);
-                        deviceMainPresenter.getMonitorHistory(meterData.getMeterid() , tvTimeActionStar.getText()+" 00:00:00", tvTimeActionEnd.getText()+" 23:59:59");
+                        deviceMainPresenter.getMonitorHistory(meterID , tvTimeActionStar.getText()+" 00:00:00", tvTimeActionEnd.getText()+" 23:59:59");
                     }
                 }, new DialogInterface.OnDismissListener() {
                     @Override
@@ -365,15 +371,15 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
 
 
         //判断图表中原来是否有数据
-        if (lineChart.getData() != null && lineChart.getData().getDataSetCount() > 0) {
-            //获取数据1
-            set1 = (LineDataSet) lineChart.getData().getDataSetByIndex(0);
-            set1.setValues(values1);
-            //刷新数据
-            lineChart.getData().notifyDataChanged();
-            lineChart.notifyDataSetChanged();
-            lineChart.invalidate();
-        } else {
+//        if (lineChart.getData() != null && lineChart.getData().getDataSetCount() > 0) {
+//            //获取数据1
+//            set1 = (LineDataSet) lineChart.getData().getDataSetByIndex(0);
+//            set1.setValues(values1);
+//            //刷新数据
+//            lineChart.getData().notifyDataChanged();
+//            lineChart.notifyDataSetChanged();
+//            lineChart.invalidate();
+//        } else {
             //设置数据1  参数1：数据源 参数2：图例名称
             set1 = new LineDataSet(values1, type);
             set1.setColor(chartColor);
@@ -413,7 +419,7 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
             //绘制图表
             lineChart.invalidate();
             lineChart.notifyDataSetChanged();
-        }
+        //}
     }
 
     /**
@@ -474,11 +480,20 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
         //设置y轴坐标值颜色
         leftAxis.setTextColor(textColor);
         //保证Y轴从0开始，不然会上移一点
-        leftAxis.setAxisMinimum(0f);
+        //leftAxis.setAxisMinimum(0f);
         //设置网格线为虚线效果
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
         //是否绘制0所在的网格线
         leftAxis.setDrawZeroLine(false);
+        //设置在图表上最高处的值相比轴上最高值的顶端空间（总轴范围的百分比）
+        leftAxis.setSpaceTop(20f);
+
+//        LimitLine limitLine  = new LimitLine(10.0f,"限制线：10.0");
+//        limitLine.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
+//        limitLine.setTextSize(8);
+//        limitLine.setTextColor(Color.parseColor("#000000"));
+//        leftAxis.addLimitLine(limitLine);
+
 
     }
 
@@ -493,13 +508,6 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
         xAxis.setTextSize(10f); // 文本大小14
         xAxis.setTextColor(textColor);
         //xAxis.setTypeface(Typeface.DEFAULT_BOLD); // 加粗字体
-        xAxis.setValueFormatter(new ValueFormatter() { // 自定义值格式
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                return 9 - (int) value + "0后";
-
-            }
-        });
     }
 
     private void setChartData(List<MonitorHistoryBean.HistoryList> datas,String type,int showType) {
@@ -527,15 +535,15 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
         }
 
         BarDataSet barDataSet;
-        if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
-            //获取数据1
-            barDataSet = (BarDataSet) barChart.getData().getDataSetByIndex(0);
-            barDataSet.setValues(yVals);
-            //刷新数据
-            barChart.getData().notifyDataChanged();
-            barChart.notifyDataSetChanged();
-            barChart.invalidate();
-        }else{
+//        if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
+//            //获取数据1
+//            barDataSet = (BarDataSet) barChart.getData().getDataSetByIndex(0);
+//            barDataSet.setValues(yVals);
+//            //刷新数据
+//            barChart.getData().notifyDataChanged();
+//            barChart.notifyDataSetChanged();
+//            barChart.invalidate();
+//        }else{
             barDataSet = new BarDataSet(yVals, type);
             barDataSet.setColor(barColor);
             barDataSet.setValueTextSize(10f);
@@ -562,7 +570,7 @@ public class Fragment_Socket_Chart extends BaseFragment implements I_ShowDevice 
             barChart.setMarker(new LineChartMarkerView(getActivity(), datas));
             barChart.setData(bardata);
             barChart.invalidate();
-        }
+        //}
     }
 
 

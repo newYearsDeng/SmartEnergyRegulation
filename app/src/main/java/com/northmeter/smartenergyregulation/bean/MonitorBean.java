@@ -30,8 +30,6 @@ public class MonitorBean extends CommonResponse{
             this.list = list;
         }
 
-
-
         public class BuildList implements Serializable{
             private String bulidingid;
             private String buidingname;
@@ -79,9 +77,6 @@ public class MonitorBean extends CommonResponse{
                 this.child = child;
             }
         }
-
-
-
 
     }
 
@@ -182,7 +177,6 @@ public class MonitorBean extends CommonResponse{
             this.child = child;
         }
     }
-
 
 }
 

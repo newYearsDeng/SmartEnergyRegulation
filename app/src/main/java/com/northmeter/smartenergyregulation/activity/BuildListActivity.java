@@ -2,7 +2,6 @@ package com.northmeter.smartenergyregulation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.andview.refreshview.XRefreshView;
 import com.northmeter.smartenergyregulation.Interface.I_ShowData;

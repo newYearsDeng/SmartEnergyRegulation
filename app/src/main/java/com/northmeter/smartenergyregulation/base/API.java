@@ -23,6 +23,9 @@ public class API {
     public static String getEquipment = URL_BASE +"/extend/leaderview/getEquipment";
 
 
+    /**建筑下所有设备类型统计*/
+    public static String getEqtype = URL_BASE +"/littleprogram/equipment/geteqtype";
+
 
 
 
@@ -53,6 +56,14 @@ public class API {
 
     /**历史告警信息--post*/
     public static String gethistorywarn = URL_BASE +"/intelligentoutlet/intelligentoutlet/gethistorywarn";
+
+
+
+    /**建筑树----get*/
+    public static String getTree = URL_BASE+"/customerbuildinginfo/customerbuildinginfo/getTree";
+
+    /**查询某类型的所有设备----get*/
+    public static String getSameTypeEquip = URL_BASE + "/littleprogram/equipment/getsametypeeq";
 
 
 }

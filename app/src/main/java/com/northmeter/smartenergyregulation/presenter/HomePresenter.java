@@ -12,6 +12,7 @@ import com.northmeter.smartenergyregulation.Interface.I_ShowHome;
 import com.northmeter.smartenergyregulation.base.API;
 import com.northmeter.smartenergyregulation.bean.AllbuildingmonitorBean;
 import com.northmeter.smartenergyregulation.bean.AllleafmonitorBean;
+import com.northmeter.smartenergyregulation.bean.CommonResponse;
 import com.northmeter.smartenergyregulation.bean.MonitorBean;
 import com.northmeter.smartenergyregulation.http.DialogCallback;
 import com.northmeter.smartenergyregulation.http.JsonCallback;
@@ -114,4 +115,50 @@ public class HomePresenter implements I_HomePresenter {
                     }
                 });
     }
+
+
+    public void getTree(String buildingId) {
+        OkGo.<CommonResponse>get(API.getTree)
+                .tag(this)
+                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .headers("token", SaveUserInfo.getLoginUser(context).getToken())
+                .params("buildingId",buildingId)
+                .execute(new JsonCallback<CommonResponse>(CommonResponse.class) {
+                    @Override
+                    public void onSuccess(Response<CommonResponse> response) {
+
+                    }
+
+                    @Override
+                    public void onError(Response<CommonResponse> response) {
+                        super.onError(response);
+                    }
+                });
+    }
+
+
+    public void getsametypeeq(String buildingId) {
+        OkGo.<CommonResponse>get(API.getSameTypeEquip)
+                .tag(this)
+                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .headers("token", SaveUserInfo.getLoginUser(context).getToken())
+                .params("buildid",buildingId)
+                .params("typeid","001008")
+                .params("limit",50)
+                .params("page",1)
+                .execute(new JsonCallback<CommonResponse>(CommonResponse.class) {
+                    @Override
+                    public void onSuccess(Response<CommonResponse> response) {
+
+                    }
+
+                    @Override
+                    public void onError(Response<CommonResponse> response) {
+                        super.onError(response);
+                    }
+                });
+    }
+
+
+
 }

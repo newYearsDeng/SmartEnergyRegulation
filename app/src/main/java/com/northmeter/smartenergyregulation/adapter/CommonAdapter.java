@@ -12,7 +12,6 @@ import java.util.List;
  * Created by admin on 16/9/29.
  */
 public abstract class CommonAdapter<T> extends BaseAdapter {
-
     protected LayoutInflater mInflater;
     protected Context mContext;
     protected List<T> mDatas;
